@@ -5,6 +5,10 @@ from django.urls import path, include
 from django.http import JsonResponse
 from .swagger import schema_view
 from django.contrib.auth.decorators import login_required
+from drf_yasg.utils import swagger_auto_schema
+from django.shortcuts import redirect
+from rest_framework.views import APIView
+from rest_framework.permissions import AllowAny
 
 @login_required
 def social_login_success(request):
@@ -18,6 +22,8 @@ def social_login_success(request):
         },
         'message': 'Social login successful!'
     })
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
