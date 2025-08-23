@@ -35,6 +35,8 @@ THIRD_PARTY_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.facebook',
+    'djcelery_email',
+    'django_celery_beat',
 ]
 
 LOCAL_APPS = [
@@ -276,3 +278,22 @@ CORS_ALLOW_CREDENTIALS = True
 
 # Frontend URL for email templates
 FRONTEND_URL = config('FRONTEND_URL', default='http://localhost:3000')
+
+CELERY_BROKER_URL = env('CELERY_BROKER_URL')
+CELERY_RESULT_BACKEND = env('CELERY_RESULT_BACKEND')
+CELERY_TIMEZONE = "UTC"
+
+EMAIL_BACKEND = env('EMAIL_BACKEND')
+
+
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        'Bearer': {
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'in': 'header',
+            'description': 'JWT authorization header using the Bearer scheme. Example: "Bearer {token}"'
+        }
+    },
+    'USE_SESSION_AUTH': False,
+}
