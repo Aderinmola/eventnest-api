@@ -2,9 +2,7 @@ from pathlib import Path
 import environ
 from decouple import config
 
-env = environ.Env(
-    DEBUG=(bool, False)
-)
+env = environ.Env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
@@ -120,7 +118,7 @@ SITE_ID = 1
 # ============== REST FRAMEWORK CONFIGURATION ==============
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication', 
     ],
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
@@ -266,12 +264,12 @@ SOCIALACCOUNT_SIGNALS = {
 }
 
 # ============== CORS CONFIGURATION ==============
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-    "http://127.0.0.1:3000",
-    "http://localhost:5500",
-    "http://127.0.0.1:5500",
-]
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:3000",
+#     "http://127.0.0.1:3000",
+#     "http://localhost:5500",
+#     "http://127.0.0.1:5500",
+# ]
 CORS_ALLOW_CREDENTIALS = True
 
 # Frontend URL for email templates
