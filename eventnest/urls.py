@@ -27,6 +27,8 @@ urlpatterns = [
     path('api/auth/', include('djoser.urls')),
     path('api/auth/', include('djoser.urls.jwt')),
     path('accounts/profile/', social_login_success, name='social_login_success'),
+    
+    path("events/", include("apps.events.urls")), #urls for events
 ]
 
 
