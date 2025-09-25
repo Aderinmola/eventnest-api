@@ -33,10 +33,11 @@ class EventDetailSerializer(serializers.ModelSerializer):
     owner = serializers.HiddenField(default=serializers.CurrentUserDefault())
     updated_by = serializers.HiddenField(default=serializers.CurrentUserDefault())
     collaborators = CollaboratorSerializer(source='collaborator_set', many=True, read_only=True)
+    budget_id = serializers.CharField(source='budget.id', read_only=True)
 
     class Meta:
         model = Event
-        fields = ['id', 'name', 'date', 'location', 'notes', 'owner', 'updated_by', 'collaborators']
+        fields = ['id', 'name', 'date', 'location', 'notes', 'owner', 'updated_by', 'collaborators', 'budget_id']
         read_only_fields = ['id', 'owner', 'updated_by', 'collaborators']
 
 class InvitationCreateSerializer(serializers.Serializer):
